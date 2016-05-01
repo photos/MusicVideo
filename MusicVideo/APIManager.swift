@@ -24,21 +24,43 @@ class APIManager {
         let task = session.dataTaskWithURL(url) {
             (data, response, error) -> Void in
             
-            // bring everything from background to main thread
-            dispatch_async(dispatch_get_main_queue()) {
-                
-                if error != nil {
-                    // explain why the operation failed
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue()) {
                     completion(result: (error!.localizedDescription))
-                } else {
-                    // success
-                    completion(result: "NSURLSession successful")
-                    print(data!)
+                }
+                
+            } else {
+                
+                // Added for JSONSerialization
+                //print(data)
+                do {
+                    /* .AllowFragments - top level object is not Array or Dictionary.
+                    Any type of string or value
+                    NSJSONSerialization requires the Do / Try / Catch
+                    Converts the NSData into JSON Object and cast it to a Dictionary */
+                    
+                    if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? [String: AnyObject] {
+                        
+                        print(json)
+                        
+                        // move back to main queue, set a priority high which means you have a high
+                        // priority job that might take time. (priority, 0) means reserved for future
+                        // use.
+                        let priority = DISPATCH_QUEUE_PRIORITY_HIGH
+                        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                            dispatch_async(dispatch_get_main_queue()) {
+                                completion(result: "JSONSerialization Successful")
+                            }
+                        }
+                    }
+                } catch {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(result: "error in NSJSONSerialization")
+                    }
                 }
             }
+            // End of JSONSerialization
         }
-        
-        // have to do task.resume or the task will never execute
         task.resume()
     }
     
