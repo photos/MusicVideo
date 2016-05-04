@@ -62,7 +62,7 @@
                                     <outlet property="musicImage" destination="1HP-Sy-f2u" id="B9Z-W8-YQH"/>
                                     <outlet property="musicTitle" destination="tzO-L8-hje" id="xAA-UQ-peh"/>
                                     <outlet property="rank" destination="hQf-ut-Aqe" id="muD-kv-Dzm"/>
-                                    <segue destination="GwD-hB-NZp" kind="show" id="G8c-8s-oMv"/>
+                                    <segue destination="GwD-hB-NZp" kind="show" identifier="musicDetail" id="G8c-8s-oMv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -111,23 +111,23 @@
                                     <constraint firstAttribute="width" constant="177" id="3SG-ou-aY1"/>
                                     <constraint firstAttribute="height" constant="21" id="nNw-qC-g8R"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlq-P1-eqc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlq-P1-eqc">
                                 <rect key="frame" x="304" y="340" width="90" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="3WU-3d-dZs"/>
                                     <constraint firstAttribute="height" constant="21" id="pcT-1R-kmw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rights" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3R-46-vBt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rights" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3R-46-vBt">
                                 <rect key="frame" x="1" y="369" width="412" height="315"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -160,6 +160,13 @@
                         </barButtonItem>
                     </toolbarItems>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="vGenre" destination="nXv-fN-hfI" id="jrl-vc-jQh"/>
+                        <outlet property="vName" destination="iAB-Vp-Pz2" id="1cb-7K-jYA"/>
+                        <outlet property="vPrice" destination="xlq-P1-eqc" id="MXl-1f-d52"/>
+                        <outlet property="vRights" destination="t3R-46-vBt" id="eOW-WL-q9U"/>
+                        <outlet property="videoImage" destination="h11-S9-X0U" id="aiQ-uO-jal"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Qj-sv-i9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

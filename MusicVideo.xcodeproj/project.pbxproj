@@ -92,6 +92,7 @@
 			children = (
 				0B54A8111CDA7978007547A9 /* MusicVideoTVC.swift */,
 				0B54A8131CDA89CF007547A9 /* MusicVideoCell.swift */,
+				0B54A8151CDA9F90007547A9 /* MusicVideoDetailVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -101,7 +102,6 @@
 			children = (
 				0B54A7B61CD18209007547A9 /* LaunchScreen.storyboard */,
 				0B54A7B11CD18209007547A9 /* Main.storyboard */,
-				0B54A8151CDA9F90007547A9 /* MusicVideoDetailVC.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
