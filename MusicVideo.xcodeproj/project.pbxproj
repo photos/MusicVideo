@@ -18,6 +18,7 @@
 		0B54A8121CDA7978007547A9 /* MusicVideoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B54A8111CDA7978007547A9 /* MusicVideoTVC.swift */; };
 		0B54A8141CDA89CF007547A9 /* MusicVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B54A8131CDA89CF007547A9 /* MusicVideoCell.swift */; };
 		0B54A8161CDA9F90007547A9 /* MusicVideoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B54A8151CDA9F90007547A9 /* MusicVideoDetailVC.swift */; };
+		0B54A8181CDAAC83007547A9 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B54A8171CDAAC83007547A9 /* SettingsTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		0B54A8111CDA7978007547A9 /* MusicVideoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTVC.swift; sourceTree = "<group>"; };
 		0B54A8131CDA89CF007547A9 /* MusicVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoCell.swift; sourceTree = "<group>"; };
 		0B54A8151CDA9F90007547A9 /* MusicVideoDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoDetailVC.swift; sourceTree = "<group>"; };
+		0B54A8171CDAAC83007547A9 /* SettingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			children = (
 				0B54A8111CDA7978007547A9 /* MusicVideoTVC.swift */,
 				0B54A8131CDA89CF007547A9 /* MusicVideoCell.swift */,
+				0B54A8171CDAAC83007547A9 /* SettingsTVC.swift */,
 				0B54A8151CDA9F90007547A9 /* MusicVideoDetailVC.swift */,
 			);
 			name = Controller;
@@ -207,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B54A7E41CD666CD007547A9 /* APIManager.swift in Sources */,
+				0B54A8181CDAAC83007547A9 /* SettingsTVC.swift in Sources */,
 				0B54A7E91CD6A7AB007547A9 /* MusicVideo.swift in Sources */,
 				0B54A7AE1CD18209007547A9 /* AppDelegate.swift in Sources */,
 				0B54A7EE1CD6C75E007547A9 /* Reachability.m in Sources */,
