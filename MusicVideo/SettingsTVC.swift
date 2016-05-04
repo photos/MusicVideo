@@ -29,6 +29,12 @@ class SettingsTVC: UITableViewController {
         title = "Settings"
         
         touchID.on = NSUserDefaults.standardUserDefaults().boolForKey("SecSetting")
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("APICNT") != nil {
+            let theValue = NSUserDefaults.standardUserDefaults().objectForKey("APICNT") as! Int
+            apiCount.text = "\(theValue)"
+            sliderCount.value = Float(theValue)
+        }
     }
     
     func preferredFontChange() {
@@ -54,5 +60,12 @@ class SettingsTVC: UITableViewController {
         } else {
             defaults.setBool(false, forKey: "SecSetting")
         }
+    }
+    
+    @IBAction func valueChanged(sender: UISlider) {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(Int(sliderCount.value), forKey: "APICNT")
+        apiCount.text = "\(Int(sliderCount.value))"
     }
 }
