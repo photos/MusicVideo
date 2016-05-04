@@ -20,7 +20,7 @@ class MusicVideoDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+               
         title = videos.vArtist
         
         vName.text = videos.vName
