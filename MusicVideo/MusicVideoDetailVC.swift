@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 class MusicVideoDetailVC: UIViewController {
 
@@ -33,6 +35,21 @@ class MusicVideoDetailVC: UIViewController {
         } else {
             // if image is still in background and image isnt received yet
             videoImage.image = UIImage(named: "noImg")
+        }
+    }
+    
+    @IBAction func playVideo(sender: UIBarButtonItem) {
+        
+        let url = NSURL(string: videos.vVideoUrl)!
+        
+        let player = AVPlayer(URL: url)
+        
+        let playerViewController = AVPlayerViewController()
+        
+        playerViewController.player = player
+        
+        self.presentViewController(playerViewController, animated: true) {
+            playerViewController.player?.play()
         }
     }
 }
