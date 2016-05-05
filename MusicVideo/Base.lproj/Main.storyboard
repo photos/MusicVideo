@@ -219,6 +219,9 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="d9N-iW-iXx"/>
                         <barButtonItem systemItem="action" id="7rG-ON-uPw">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="socialMedia:" destination="GwD-hB-NZp" id="XEp-SX-7hm"/>
+                            </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
