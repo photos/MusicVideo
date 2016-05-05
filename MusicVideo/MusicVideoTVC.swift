@@ -14,6 +14,11 @@ class MusicVideoTVC: UITableViewController {
     
     var limit = 10
     
+    var filterSearch = [Videos]()
+    
+    // nil lets you display search results in same vc
+    let resultSearchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +50,21 @@ class MusicVideoTVC: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
         
         title = "The iTunes Top \(limit) Music Videos"
+        
+        // Setup the search controller
+        resultSearchController.searchResultsUpdater = self
+        
+        // makes sure searchbar doesnt stay on screen if user leaves the view
+        definesPresentationContext = true
+        
+        resultSearchController.dimsBackgroundDuringPresentation = false
+        
+        resultSearchController.searchBar.placeholder = "Search for Artist, Name, Rank"
+        
+        resultSearchController.searchBar.searchBarStyle = .Prominent // same as mail, messages look
+        
+        // add the search bar to the tableview
+        tableView.tableHeaderView = resultSearchController.searchBar
         
         tableView.reloadData()
     }
@@ -91,7 +111,12 @@ class MusicVideoTVC: UITableViewController {
     @IBAction func refresh(sender: UIRefreshControl) {
         
         self.refreshControl?.endRefreshing()
-        runAPI()
+        
+        if resultSearchController.active {
+            self.refreshControl?.attributedTitle = NSAttributedString(string: "refresh disabled in search")
+        } else {
+            runAPI()
+        }
     }
     
     
@@ -136,6 +161,12 @@ class MusicVideoTVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        // if im in the searchbar
+        if resultSearchController.active {
+            return filterSearch.count
+        }
+        
         return videos.count
     }
 
@@ -148,8 +179,16 @@ class MusicVideoTVC: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(storyboard.cellReuseIdentifier, forIndexPath: indexPath) as! MusicVideoCell
 
-        // all cell stuff is updated in the cell class didSet
-        cell.video = videos[indexPath.row]
+        // if im in the searchbar
+        if resultSearchController.active {
+            
+            cell.video = filterSearch[indexPath.row]
+            
+        } else {
+
+            // all cell stuff is updated in the cell class didSet
+            cell.video = videos[indexPath.row]
+        }
         
         return cell
     }
@@ -158,10 +197,34 @@ class MusicVideoTVC: UITableViewController {
         
         if segue.identifier == storyboard.segueIdentifier {
             if let indexpath = tableView.indexPathForSelectedRow {
-                let video = videos[indexpath.row]
+                
+                let video: Videos
+                
+                // if im in the searchbar
+                if resultSearchController.active {
+                    video = filterSearch[indexpath.row]
+                } else {
+                    video = videos[indexpath.row]
+                }
+                
                 let dvc = segue.destinationViewController as! MusicVideoDetailVC
                 dvc.videos = video
             }
         }
+    }
+    
+    
+    func filterSearch(searchText: String) {
+        filterSearch = videos.filter { videos in
+            return videos.vArtist.lowercaseString.containsString(searchText.lowercaseString) || videos.vName.lowercaseString.containsString(searchText.lowercaseString) || "\(videos.vRank)".lowercaseString.containsString(searchText.lowercaseString)
+        }
+        tableView.reloadData()
+    }
+}
+
+extension MusicVideoTVC: UISearchResultsUpdating {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        searchController.searchBar.text!.lowercaseString
+        filterSearch(searchController.searchBar.text!)
     }
 }
