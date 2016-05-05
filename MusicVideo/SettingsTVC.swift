@@ -34,6 +34,10 @@ class SettingsTVC: UITableViewController {
             let theValue = NSUserDefaults.standardUserDefaults().objectForKey("APICNT") as! Int
             apiCount.text = "\(theValue)"
             sliderCount.value = Float(theValue)
+        } else {
+            // set to 10 by default
+            sliderCount.value = 10.0
+            apiCount.text = "\(Int(sliderCount.value))"
         }
     }
     

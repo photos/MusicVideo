@@ -81,6 +81,12 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="wFh-VY-qGj"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="pZo-ZF-buW">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="L8x-VE-gME" eventType="valueChanged" id="HBN-zw-pW4"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZr-JK-E60" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
